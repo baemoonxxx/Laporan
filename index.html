@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚽ Materi Laporan – Kelas 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g1: #0d4a1f;
+  --g2: #1a6b2f;
+  --g3: #2d9e50;
+  --g4: #4abe6a;
+  --yellow: #f0c500;
+  --yellow2: #d4a800;
+  --red: #e8380d;
+  --white: #ffffff;
+  --cream: #fffdf0;
+  --orange: #ff6b2b;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body {
+  font-family:'Nunito',sans-serif;
+  background:var(--g1);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before {
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    repeating-linear-gradient(90deg,rgba(255,255,255,0.035) 0,rgba(255,255,255,0.035) 1px,transparent 1px,transparent 90px),
+    repeating-linear-gradient(0deg,rgba(255,255,255,0.02) 0,rgba(255,255,255,0.02) 1px,transparent 1px,transparent 90px);
+  pointer-events:none;z-index:0;
+}
+
+.nav {
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(8,32,16,0.97);
+  border-bottom:3px solid var(--g3);
+  backdrop-filter:blur(10px);
+  padding:10px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+
+.nav-brand {
+  font-family:'Fredoka One',cursive;
+  color:var(--yellow);
+  font-size:1.15rem;
+  display:flex;align-items:center;gap:8px;
+  text-shadow:1px 1px 0 rgba(0,0,0,0.5);
+}
+
+.nav-steps { display:flex;gap:6px; }
+
+.ndot {
+  width:36px;height:36px;border-radius:50%;
+  border:2px solid rgba(255,255,255,0.25);
+  color:rgba(255,255,255,0.4);
+  font-size:0.75rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all 0.25s;
+  font-family:'Fredoka One',cursive;
+}
+.ndot:hover{border-color:rgba(255,255,255,0.5);color:rgba(255,255,255,0.7);}
+.ndot.active{background:var(--yellow);border-color:var(--yellow);color:#111;}
+.ndot.done{background:var(--g3);border-color:var(--g3);color:#fff;}
+
+.page{display:none;min-height:100vh;padding:76px 16px 48px;position:relative;z-index:1;}
+.page.active{display:block;}
+
+.page-header{text-align:center;margin-bottom:28px;}
+.page-badge{
+  display:inline-block;background:var(--yellow);color:#111;
+  font-family:'Fredoka One',cursive;font-size:0.85rem;
+  padding:5px 18px;border-radius:99px;margin-bottom:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.3);
+}
+.page-header h2{
+  font-family:'Fredoka One',cursive;font-size:2.2rem;color:#fff;
+  text-shadow:3px 3px 0 rgba(0,0,0,0.35);
+  line-height:1.2;
+}
+.page-header p{color:#a8e6b8;font-weight:700;font-size:0.9rem;margin-top:5px;}
+
+.card{
+  background:#fff;border-radius:22px;
+  padding:26px 24px;max-width:700px;margin:0 auto 20px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.45);
+}
+
+.card-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.card-icon{
+  width:50px;height:50px;border-radius:14px;
+  background:var(--g2);display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;flex-shrink:0;
+}
+.card-title{font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--g2);line-height:1.2;}
+.card-sub{font-size:0.82rem;color:#888;font-weight:700;margin-top:2px;}
+
+.ri{opacity:0;transform:translateY(20px);transition:opacity 0.45s ease,transform 0.45s ease;}
+.ri.vis{opacity:1;transform:translateY(0);}
+
+.def-box{
+  background:#eafff1;border-left:5px solid var(--g2);
+  border-radius:12px;padding:14px 18px;
+  font-size:1rem;font-weight:700;color:#1a3a24;line-height:1.65;
+}
+.def-box strong{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--g2);}
+
+.str-list{display:flex;flex-direction:column;gap:9px;}
+.str-item{
+  display:flex;align-items:flex-start;gap:12px;
+  background:#f7f7f7;border-radius:12px;padding:11px 14px;
+  border:1.5px solid #ebebeb;
+}
+.str-num{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--g2);color:#fff;
+  font-family:'Fredoka One',cursive;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.str-lbl{font-weight:800;font-size:0.95rem;color:#222;}
+.str-desc{font-size:0.82rem;color:#666;font-weight:600;margin-top:2px;}
+
+.laporan-box{
+  background:var(--cream);border:2px solid var(--yellow);
+  border-radius:16px;padding:18px;
+}
+.laporan-title{
+  font-family:'Fredoka One',cursive;font-size:1.2rem;
+  color:var(--g2);text-align:center;margin-bottom:14px;
+  padding-bottom:10px;border-bottom:2px dashed var(--yellow);
+}
+.lap-row{display:flex;gap:10px;margin-bottom:9px;align-items:flex-start;}
+.lap-tag{
+  background:var(--g2);color:#fff;font-weight:800;font-size:0.72rem;
+  padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px;
+}
+.lap-isi{font-size:0.9rem;color:#333;font-weight:600;line-height:1.6;}
+
+.modul-teks{
+  font-size:0.95rem;color:#333;font-weight:600;line-height:1.7;
+  background:#fff;border-radius:10px;padding:14px;
+  border:1px solid #f0d080;margin-bottom:14px;
+}
+.modul-tabel{width:100%;border-collapse:collapse;font-size:0.9rem;}
+.modul-tabel th{
+  background:var(--g2);color:#fff;padding:10px 12px;
+  text-align:left;font-weight:800;font-size:0.82rem;
+}
+.modul-tabel th:first-child{border-radius:8px 0 0 0;}
+.modul-tabel th:last-child{border-radius:0 8px 0 0;}
+.modul-tabel td{padding:10px 12px;border-bottom:1px solid #f0d080;vertical-align:top;font-weight:600;}
+.modul-tabel tr:nth-child(even) td{background:#fffbf0;}
+.dotline{
+  display:inline-block;width:95%;min-width:100px;
+  border-bottom:2px dotted #bbb;height:22px;
+}
+
+.kunci-box{
+  background:#fff8e1;border:2px solid var(--yellow);
+  border-radius:12px;padding:14px 16px;
+}
+.kunci-title{font-weight:800;color:#b07800;font-size:0.9rem;margin-bottom:8px;}
+.kunci-isi{font-size:0.82rem;color:#555;font-weight:600;line-height:1.9;}
+
+.btn-row{display:flex;justify-content:center;gap:12px;max-width:700px;margin:0 auto;}
+.btn{
+  font-family:'Fredoka One',cursive;font-size:1.1rem;
+  border:none;border-radius:50px;padding:13px 30px;cursor:pointer;
+  box-shadow:0 4px 0 rgba(0,0,0,0.25);
+  transition:transform 0.1s,box-shadow 0.1s;
+}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,0.2);}
+.btn-next{background:var(--yellow);color:#111;}
+.btn-prev{background:rgba(255,255,255,0.15);color:#fff;}
+
+/* ===== FOCUS OVERLAY - FULLSCREEN ANSWER DISPLAY ===== */
+#focus-overlay {
+  display:none;
+  position:fixed;inset:0;z-index:500;
+  background:#0d4a1f;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:40px 30px;
+  text-align:center;
+}
+#focus-overlay.show { display:flex; }
+
+.fo-label {
+  font-family:'Fredoka One',cursive;
+  font-size:1.2rem;
+  color:rgba(255,255,255,0.6);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+.fo-bagian {
+  font-family:'Fredoka One',cursive;
+  font-size:1.5rem;
+  color:var(--yellow);
+  margin-bottom:30px;
+}
+.fo-text {
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(2.2rem,6vw,4rem);
+  color:#fff;
+  line-height:1.3;
+  max-width:900px;
+  text-shadow:3px 3px 0 rgba(0,0,0,0.3);
+  background:rgba(255,255,255,0.07);
+  border:3px solid var(--yellow);
+  border-radius:24px;
+  padding:40px 50px;
+  margin-bottom:40px;
+}
+.fo-instruction {
+  font-family:'Fredoka One',cursive;
+  font-size:1.4rem;
+  color:var(--yellow);
+  animation:blink 1s ease infinite alternate;
+}
+@keyframes blink{from{opacity:0.5;}to{opacity:1;}}
+
+.fo-timer {
+  font-family:'Fredoka One',cursive;
+  font-size:3.5rem;
+  color:#fff;
+  margin-top:20px;
+  transition:color 0.3s;
+}
+.fo-timer.warn{color:var(--orange);}
+.fo-timer.danger{color:var(--red);animation:tpulse 0.35s ease infinite alternate;}
+.fo-bar-bg{width:100%;max-width:600px;height:14px;background:rgba(255,255,255,0.15);border-radius:99px;overflow:hidden;margin-top:16px;}
+.fo-bar{height:100%;border-radius:99px;background:var(--yellow);transition:width 1s linear,background 1s;}
+.fo-bar.warn{background:var(--orange);}
+.fo-bar.danger{background:var(--red);}
+
+@keyframes tpulse{from{transform:scale(1);}to{transform:scale(1.12);}}
+
+/* ===== TIMER BAR (fixed top, shown AFTER focus overlay) ===== */
+#timer-fixed{
+  position:fixed;top:56px;left:0;right:0;z-index:190;
+  display:none;
+  flex-direction:column;
+  background:rgba(8,32,16,0.97);
+  border-bottom:2px solid var(--yellow);
+  padding:8px 16px 10px;
+}
+#timer-fixed.show{display:flex;}
+
+.tf-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.tf-label{font-family:'Fredoka One',cursive;font-size:0.85rem;color:rgba(255,255,255,0.7);letter-spacing:1px;}
+.tf-count{font-family:'Fredoka One',cursive;font-size:2rem;color:var(--yellow);line-height:1;}
+.tf-count.warn{color:var(--orange);}
+.tf-count.danger{color:var(--red);animation:tpulse 0.35s ease infinite alternate;}
+
+.tf-bar-bg{height:10px;background:rgba(255,255,255,0.15);border-radius:99px;overflow:hidden;}
+.tf-bar{height:100%;border-radius:99px;background:var(--yellow);transition:width 1s linear,background 1s;}
+.tf-bar.warn{background:var(--orange);}
+.tf-bar.danger{background:var(--red);}
+
+/* ===== GAME LAYOUT ===== */
+.ws-layout{
+  display:grid;grid-template-columns:1fr 290px;gap:18px;
+  max-width:900px;margin:0 auto;
+}
+@media(max-width:720px){.ws-layout{grid-template-columns:1fr;}}
+
+.ws-card{
+  background:#fff;border-radius:22px;padding:22px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.45);
+  border:3px solid var(--yellow);
+}
+.ws-head{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--g2);text-align:center;margin-bottom:3px;}
+.ws-sub{font-size:0.8rem;color:#888;font-weight:700;text-align:center;margin-bottom:14px;}
+
+.ws-table{width:100%;border-collapse:collapse;}
+.ws-table td{padding:10px 12px;border:2px solid #e0e0e0;font-size:0.88rem;vertical-align:middle;}
+.ws-table td:first-child{
+  font-weight:800;color:var(--g2);width:40%;
+  background:#f0f9f3;font-size:0.83rem;
+}
+.ws-table tr.row-active td{background:#fff9c4!important;border-color:var(--yellow2)!important;}
+.ws-table tr.row-active td:first-child{background:#ffe082!important;}
+.ws-table tr.row-done td{background:#e8f5e9!important;border-color:var(--g3)!important;color:#1a5c2a;}
+.ws-table tr.row-done td:first-child{background:#c8e6c9!important;color:var(--g2);}
+.ws-fill{font-size:0.88rem;font-weight:700;color:var(--g2);display:block;min-height:22px;transition:all 0.3s;}
+
+.rp{display:flex;flex-direction:column;gap:14px;}
+
+.student-badge{
+  background:var(--yellow);color:#111;
+  border-radius:16px;padding:12px 16px;text-align:center;
+}
+.sb-lbl{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;opacity:0.65;}
+.sb-name{font-family:'Fredoka One',cursive;font-size:1.6rem;line-height:1.1;}
+.sb-bagian{font-size:0.75rem;font-weight:800;opacity:0.75;margin-top:2px;}
+
+.opts-card{
+  background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);
+  border-radius:18px;padding:16px;backdrop-filter:blur(8px);
+}
+.opts-title{
+  font-family:'Fredoka One',cursive;font-size:1rem;
+  color:var(--yellow);text-align:center;margin-bottom:12px;
+}
+
+.opt-btn{
+  display:flex;align-items:flex-start;gap:10px;width:100%;
+  background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);
+  border-radius:12px;padding:9px 12px;margin-bottom:8px;
+  cursor:pointer;text-align:left;color:#fff;
+  font-family:'Nunito',sans-serif;
+  transition:all 0.18s;
+}
+.opt-btn:hover{background:rgba(255,255,255,0.2);border-color:var(--yellow);transform:translateX(3px);}
+.opt-btn.used{opacity:0.3;pointer-events:none;text-decoration:line-through;}
+.opt-letter{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--yellow);min-width:22px;line-height:1;}
+.opt-text{font-size:0.78rem;font-weight:700;line-height:1.4;}
+
+.pick-area{text-align:center;padding:20px 0 10px;}
+.ball-svg-wrap{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:140px;height:140px;border-radius:50%;
+  background:#fff;border:4px solid #222;
+  box-shadow:inset -10px -10px 24px rgba(0,0,0,0.15),0 8px 28px rgba(0,0,0,0.4);
+  overflow:hidden;position:relative;margin-bottom:14px;
+}
+.ball-svg-wrap.spinning{animation:bspin 0.3s linear infinite;}
+@keyframes bspin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.ball-svg-wrap svg{width:100%;height:100%;}
+
+.picked-name{
+  font-family:'Fredoka One',cursive;font-size:2.8rem;
+  color:var(--yellow);text-shadow:3px 3px 0 rgba(0,0,0,0.3);
+  margin:8px 0 16px;animation:popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+@keyframes popIn{0%{transform:scale(0.4);opacity:0;}100%{transform:scale(1);opacity:1;}}
+
+.pick-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.pbtn{
+  font-family:'Fredoka One',cursive;font-size:1.1rem;
+  border:none;border-radius:50px;padding:13px 28px;cursor:pointer;
+  box-shadow:0 4px 0 rgba(0,0,0,0.25);transition:transform 0.1s,box-shadow 0.1s;
+}
+.pbtn:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,0.2);}
+.pbtn-spin{background:var(--yellow);color:#111;}
+.pbtn-again{background:var(--red);color:#fff;}
+.pbtn-go{background:var(--g3);color:#fff;}
+
+.prog-dots{display:flex;justify-content:center;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.pdot{
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.4);
+  transition:all 0.3s;
+}
+.pdot.done{background:var(--g3);border-color:var(--g3);color:#fff;}
+.pdot.active{background:var(--yellow);border-color:var(--yellow2);color:#111;transform:scale(1.25);}
+
+.done-splash{
+  text-align:center;padding:40px 20px;
+  background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.18);
+  border-radius:24px;max-width:500px;margin:0 auto;backdrop-filter:blur(10px);
+}
+.done-splash h2{font-family:'Fredoka One',cursive;font-size:3rem;color:var(--yellow);margin-bottom:10px;}
+.done-splash p{color:rgba(255,255,255,0.85);font-size:1rem;font-weight:700;}
+
+/* ===== QUIZ ===== */
+.quiz-card{
+  background:#fff;border-radius:22px;padding:26px 24px;
+  max-width:700px;margin:0 auto 20px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.45);
+}
+.quiz-score-row{display:flex;justify-content:space-between;font-size:0.82rem;font-weight:700;color:#888;margin-bottom:10px;}
+.qs-val{color:var(--g2);font-size:1rem;font-weight:800;}
+.q-num{font-size:0.78rem;font-weight:800;color:var(--g2);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
+.q-text{font-size:1.05rem;font-weight:700;color:#222;margin-bottom:16px;line-height:1.5;}
+.q-opts{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
+.qbtn{
+  background:#f5f5f5;border:2px solid #e0e0e0;border-radius:12px;
+  padding:12px 14px;font-family:'Nunito',sans-serif;font-size:0.93rem;
+  font-weight:700;color:#333;cursor:pointer;text-align:left;
+  display:flex;align-items:center;gap:10px;transition:all 0.15s;
+}
+.qbtn:hover:not(:disabled){background:#eafff1;border-color:var(--g2);color:var(--g2);}
+.qbtn .ql{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:50%;background:#ddd;
+  font-size:0.82rem;flex-shrink:0;transition:all 0.15s;
+}
+.qbtn:hover:not(:disabled) .ql{background:var(--g2);color:#fff;}
+.qbtn.correct{background:#eafff1;border-color:var(--g2);color:var(--g2);}
+.qbtn.correct .ql{background:var(--g2);color:#fff;}
+.qbtn.wrong{background:#fff0ee;border-color:var(--red);color:var(--red);}
+.qbtn.wrong .ql{background:var(--red);color:#fff;}
+.qbtn:disabled{cursor:default;}
+.q-feedback{
+  display:none;text-align:center;border-radius:12px;padding:12px;
+  font-weight:800;font-size:0.95rem;margin-bottom:12px;
+}
+.q-feedback.benar{background:#eafff1;color:var(--g2);border:2px solid var(--g2);}
+.q-feedback.salah{background:#fff0ee;color:var(--red);border:2px solid var(--red);}
+.q-next{
+  display:none;background:var(--g2);color:#fff;
+  font-family:'Fredoka One',cursive;font-size:1rem;
+  border:none;border-radius:50px;padding:10px 28px;cursor:pointer;
+  margin:0 auto;box-shadow:0 4px 0 rgba(0,0,0,0.2);
+}
+
+.cw{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:999;}
+.cf{position:absolute;border-radius:2px;animation:cfall linear forwards;}
+@keyframes cfall{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+
+.toast{
+  position:fixed;bottom:28px;left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:var(--g1);color:#fff;
+  font-family:'Fredoka One',cursive;font-size:1.1rem;
+  padding:12px 28px;border-radius:50px;
+  border:3px solid var(--yellow);
+  box-shadow:0 6px 20px rgba(0,0,0,0.4);
+  transition:transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
+  z-index:999;white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- FOCUS OVERLAY - fullscreen answer display -->
+<div id="focus-overlay">
+  <div class="fo-label">✏️ Sekarang tulis di buku!</div>
+  <div class="fo-bagian" id="fo-bagian">—</div>
+  <div class="fo-text" id="fo-text">—</div>
+  <div class="fo-instruction">📖 Tulis jawaban ini di buku catatanmu!</div>
+  <div class="fo-timer" id="fo-timer">0</div>
+  <div class="fo-bar-bg"><div class="fo-bar" id="fo-bar" style="width:100%"></div></div>
+</div>
+
+<!-- TIMER FIXED TOP (shown after focus overlay closes) -->
+<div id="timer-fixed">
+  <div class="tf-top">
+    <div class="tf-label">⏱️ WAKTU NULIS DI BUKU</div>
+    <div class="tf-count" id="tf-count">0</div>
+  </div>
+  <div class="tf-bar-bg"><div class="tf-bar" id="tf-bar" style="width:100%"></div></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">⚽ Laporan Terarium</div>
+  <div class="nav-steps">
+    <div class="ndot active" id="nd0" onclick="goPg(0)" title="Materi">1</div>
+    <div class="ndot" id="nd1" onclick="goPg(1)" title="Soal Modul">2</div>
+    <div class="ndot" id="nd2" onclick="goPg(2)" title="Game Worksheet">3</div>
+    <div class="ndot" id="nd3" onclick="goPg(3)" title="Quiz">4</div>
+  </div>
+</nav>
+
+<!-- PAGE 1 – MATERI -->
+<div class="page active" id="pg0">
+  <div class="page-header">
+    <div class="page-badge">⚽ Bagian 1 dari 4</div>
+    <h2>Ayo Belajar Laporan! 📋</h2>
+    <p>Kelas 3 – SD Islam Tahfizh Cahaya Qur'an</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head ri">
+      <div class="card-icon">📋</div>
+      <div><div class="card-title">Apa itu Laporan?</div><div class="card-sub">Materi V – Bahasa Indonesia Kelas 3</div></div>
+    </div>
+    <div class="ri">
+      <div class="def-box"><strong>Laporan</strong> adalah tulisan tentang apa yang sudah kita <b>lihat</b>, <b>dengar</b>, atau <b>lakukan</b>.<br>Laporan berisi <b>fakta</b> yang benar-benar terjadi — bukan karangan!</div>
+    </div>
+    <div class="ri" style="margin-top:14px;">
+      <div class="str-list">
+        <div class="str-item"><div class="str-num">🎯</div><div><div class="str-lbl">Tujuan Laporan</div><div class="str-desc">Memberitahu orang lain tentang kegiatan atau pengamatan yang kita lakukan</div></div></div>
+        <div class="str-item"><div class="str-num">✅</div><div><div class="str-lbl">Ciri-ciri Laporan</div><div class="str-desc">Ditulis urut dan jelas • Berisi fakta • Kalimat singkat dan mudah dimengerti</div></div></div>
+        <div class="str-item"><div class="str-num">📝</div><div><div class="str-lbl">Jenis Laporan</div><div class="str-desc">Laporan Pengamatan (mengamati sesuatu) dan Laporan Kegiatan (melakukan sesuatu)</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head ri">
+      <div class="card-icon">🔢</div>
+      <div><div class="card-title">Struktur Laporan</div><div class="card-sub">Ada 7 bagian penting!</div></div>
+    </div>
+    <div class="str-list">
+      <div class="ri"><div class="str-item"><div class="str-num">1</div><div><div class="str-lbl">Judul</div><div class="str-desc">Nama kegiatan atau pengamatan yang dilaporkan</div></div></div></div>
+      <div class="ri"><div class="str-item"><div class="str-num">2</div><div><div class="str-lbl">Waktu &amp; Tempat</div><div class="str-desc">Kapan dan di mana kegiatan berlangsung</div></div></div></div>
+      <div class="ri"><div class="str-item"><div class="str-num">3</div><div><div class="str-lbl">Tujuan Kegiatan</div><div class="str-desc">Mengapa kegiatan ini dilakukan</div></div></div></div>
+      <div class="ri"><div class="str-item"><div class="str-num">4</div><div><div class="str-lbl">Peserta</div><div class="str-desc">Siapa saja yang ikut dalam kegiatan</div></div></div></div>
+      <div class="ri"><div class="str-item"><div class="str-num">5</div><div><div class="str-lbl">Jalannya Kegiatan</div><div class="str-desc">Cerita lengkap kegiatan dari awal sampai akhir secara urut</div></div></div></div>
+      <div class="ri"><div class="str-item"><div class="str-num">6</div><div><div class="str-lbl">Hasil Kegiatan</div><div class="str-desc">Apa yang didapat atau dihasilkan dari kegiatan</div></div></div></div>
+      <div class="ri"><div class="str-item"><div class="str-num">7</div><div><div class="str-lbl">Kesimpulan</div><div class="str-desc">Pelajaran atau pesan penting dari kegiatan</div></div></div></div>
+    </div>
+  </div>
+
+  <div class="btn-row"><button class="btn btn-next" onclick="goPg(1)">Bahas Soal Modul ⚽</button></div>
+</div>
+
+<!-- PAGE 2 – SOAL MODUL -->
+<div class="page" id="pg1">
+  <div class="page-header">
+    <div class="page-badge">⚽ Bagian 2 dari 4</div>
+    <h2>Bahas Soal Modul 📖</h2>
+    <p>Baca teks lalu tulis jawabannya di buku!</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head ri">
+      <div class="card-icon">📖</div>
+      <div><div class="card-title">Teks Cerita</div><div class="card-sub">Halaman 51 – Jumat Bersih di SD Cahaya Qur'an</div></div>
+    </div>
+    <div class="ri">
+      <div class="modul-teks">
+        <b>Jumat Bersih di SD Cahaya Qur'an</b><br><br>
+        Pagi itu, udara terasa segar di SD Cahaya Qur'an. Setelah apel pagi, Bu Rini, guru kelas 3, memberi tahu bahwa hari ini adalah jadwal kelas kami melaksanakan kegiatan <i>Jumat Bersih</i>. Semua murid terlihat bersemangat.<br><br>
+        Kami dibagi menjadi tiga kelompok. Kelompok pertama bertugas menyapu halaman sekolah dan memasukkan daun kering ke tempat sampah hijau. Kelompok kedua membersihkan ruang kelas — mengelap meja, merapikan kursi, dan membuang sampah plastik ke tempat sampah kuning. Kelompok ketiga pergi ke taman sekolah untuk mencabut rumput liar dan merapikan tanaman.<br><br>
+        Dalam waktu satu jam, lingkungan sekolah menjadi bersih dan rapi. Kegiatan Jumat Bersih mengajarkan kami bahwa menjaga kebersihan adalah tanggung jawab bersama.
+      </div>
+    </div>
+    <div class="ri">
+      <div style="background:#eafff1;border-radius:10px;padding:12px 14px;margin-bottom:14px;font-weight:700;font-size:0.9rem;color:#1a3a24;">
+        ✏️ <b>Tugas:</b> Lengkapi tabel laporan di bawah berdasarkan cerita di atas! Tulis di buku!
+      </div>
+    </div>
+    <div class="ri">
+      <table class="modul-tabel">
+        <thead><tr><th style="width:38%">Struktur Laporan</th><th>Jawaban</th></tr></thead>
+        <tbody>
+          <tr><td><b>1. Judul</b></td><td><span class="dotline"></span></td></tr>
+          <tr><td><b>2. Waktu &amp; Tempat</b></td><td><span class="dotline"></span></td></tr>
+          <tr><td><b>3. Tujuan Kegiatan</b></td><td><span class="dotline"></span></td></tr>
+          <tr><td><b>4. Peserta</b></td><td><span class="dotline"></span></td></tr>
+          <tr><td><b>5. Jalannya Kegiatan</b></td><td><span class="dotline"></span></td></tr>
+          <tr><td><b>6. Hasil Kegiatan</b></td><td><span class="dotline"></span></td></tr>
+          <tr><td><b>7. Kesimpulan</b></td><td><span class="dotline"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ri" style="margin-top:16px;">
+      <div class="kunci-box">
+        <div class="kunci-title">💡 Kunci Jawaban (untuk guru)</div>
+        <div class="kunci-isi">
+          1. Jumat Bersih di SD Cahaya Qur'an<br>
+          2. Jumat pagi, di SD Cahaya Qur'an<br>
+          3. Membersihkan lingkungan sekolah bersama-sama<br>
+          4. Bu Rini dan seluruh murid kelas 3<br>
+          5. Dibagi 3 kelompok: sapu halaman, bersihkan kelas, rapikan taman<br>
+          6. Lingkungan sekolah menjadi bersih dan rapi<br>
+          7. Menjaga kebersihan adalah tanggung jawab bersama
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-prev" onclick="goPg(0)">← Kembali</button>
+    <button class="btn btn-next" onclick="goPg(2)">Game Worksheet ⚽</button>
+  </div>
+</div>
+
+<!-- PAGE 3 – GAME WORKSHEET -->
+<div class="page" id="pg2">
+  <div class="page-header">
+    <div class="page-badge">⚽ Bagian 3 dari 4</div>
+    <h2>Game Worksheet! 🌿</h2>
+    <p>Lengkapi laporan terarium bersama-sama!</p>
+  </div>
+
+  <!-- PICK SCREEN -->
+  <div id="ws-pick-screen">
+    <div class="prog-dots" id="prog-dots"></div>
+
+    <div class="card" style="max-width:500px;margin:0 auto 20px;">
+      <div style="text-align:center;margin-bottom:8px;">
+        <div class="page-badge" id="bagian-badge" style="font-size:1rem;">Bagian 1 dari 7 — Judul</div>
+      </div>
+      <div class="pick-area">
+        <div class="ball-svg-wrap" id="ball-svg">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="49" fill="white" stroke="#111" stroke-width="2"/>
+            <polygon points="50,28 63,38 58,53 42,53 37,38" fill="#111"/>
+            <polygon points="50,28 63,38 72,25 60,14 45,18" fill="#111"/>
+            <polygon points="63,38 72,53 85,47 83,32 72,25" fill="#111"/>
+            <polygon points="58,53 72,53 75,67 62,73 50,65" fill="#111"/>
+            <polygon points="42,53 50,65 38,73 25,67 28,53" fill="#111"/>
+            <polygon points="37,38 28,53 15,47 17,32 28,25" fill="#111"/>
+            <polygon points="50,28 45,18 28,25 37,38" fill="#111"/>
+          </svg>
+        </div>
+        <div class="picked-name" id="picked-name" style="display:none;">—</div>
+        <div class="pick-btns">
+          <button class="pbtn pbtn-spin" id="btn-spin" onclick="doSpin()">🎲 Pilih Siswa!</button>
+          <button class="pbtn pbtn-again" id="btn-again" style="display:none;" onclick="doSpin()">❌ Tidak Hadir?</button>
+          <button class="pbtn pbtn-go" id="btn-go" style="display:none;" onclick="goGame()">✅ Mulai Jawab!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="ws-game-screen" style="display:none;">
+    <div class="ws-layout">
+      <div class="ws-card">
+        <div class="ws-head">📋 Laporan Kegiatan</div>
+        <div class="ws-sub">Membuat Terarium — Kelas 3 SD Cahaya Qur'an</div>
+        <table class="ws-table" id="ws-table">
+          <tr id="wrow-0"><td>1. Judul Laporan</td><td><span class="ws-fill" id="wf-0"></span></td></tr>
+          <tr id="wrow-1"><td>2. Waktu &amp; Tempat</td><td><span class="ws-fill" id="wf-1"></span></td></tr>
+          <tr id="wrow-2"><td>3. Tujuan Kegiatan</td><td><span class="ws-fill" id="wf-2"></span></td></tr>
+          <tr id="wrow-3"><td>4. Peserta</td><td><span class="ws-fill" id="wf-3"></span></td></tr>
+          <tr id="wrow-4"><td>5. Jalannya Kegiatan</td><td><span class="ws-fill" id="wf-4"></span></td></tr>
+          <tr id="wrow-5"><td>6. Hasil Kegiatan</td><td><span class="ws-fill" id="wf-5"></span></td></tr>
+          <tr id="wrow-6"><td>7. Kesimpulan</td><td><span class="ws-fill" id="wf-6"></span></td></tr>
+        </table>
+      </div>
+      <div class="rp">
+        <div class="student-badge">
+          <div class="sb-lbl">Siswa yang maju</div>
+          <div class="sb-name" id="gs-name">—</div>
+          <div class="sb-bagian" id="gs-bagian">—</div>
+        </div>
+        <div class="opts-card" id="opts-panel">
+          <div class="opts-title">🔤 Pilih Jawaban</div>
+          <div id="opts-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DONE SCREEN -->
+  <div id="ws-done-screen" style="display:none;">
+    <div class="done-splash">
+      <div style="font-size:3rem;margin-bottom:10px;">🎉⚽🏆⚽🎉</div>
+      <h2>Selesai!</h2>
+      <p>Laporan Terarium kalian sudah lengkap!</p>
+      <p style="margin-top:8px;color:var(--yellow);font-family:'Fredoka One',cursive;font-size:1.2rem;">Cek buku catatan kalian ya! ✏️</p>
+      <button class="btn btn-next" style="margin-top:24px;" onclick="resetWS()">🔄 Main Lagi</button>
+    </div>
+  </div>
+
+  <div class="btn-row" style="margin-top:20px;">
+    <button class="btn btn-prev" onclick="goPg(1)">← Kembali</button>
+    <button class="btn btn-next" onclick="goPg(3)">Quiz Bonus ⚽</button>
+  </div>
+</div>
+
+<!-- PAGE 4 – QUIZ -->
+<div class="page" id="pg3">
+  <div class="page-header">
+    <div class="page-badge">⚽ Bagian 4 dari 4</div>
+    <h2>Quiz Bonus! 🏆</h2>
+    <p>Kalau masih ada waktu — ayo uji pemahamanmu!</p>
+  </div>
+
+  <div class="quiz-card" id="quiz-wrap">
+    <div style="text-align:center;padding:16px 0;">
+      <div style="font-size:2.5rem;margin-bottom:10px;">🚀</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--g2);margin-bottom:6px;">Quiz Pilihan Ganda</div>
+      <div style="font-size:0.85rem;color:#888;font-weight:700;margin-bottom:20px;">8 soal tentang laporan</div>
+      <button onclick="startQuiz()" style="font-family:'Fredoka One',cursive;font-size:1.2rem;background:var(--red);color:#fff;border:none;border-radius:50px;padding:14px 36px;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,0.2);">Mulai Quiz!</button>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-prev" onclick="goPg(2)">← Kembali</button>
+  </div>
+</div>
+
+<div class="cw" id="cw"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════ DATA ═══════════════════
+const SISWA = ["Oman","Alfan","Ahnaf","Albara","Azzam U","Balya","Nizam","Farras","Hamas","Hanzho","Nawawi","Kinaan","Azzam F","Seiraz","Husein","Almeer","Altamis","Aqian","Lionell","Shiddiq","Farid","Fais","Rayhan","Rifdi","Zahran"];
+
+const BAGIAN_INFO = [
+  {label:"Judul Laporan", row:0, timer:45},
+  {label:"Waktu & Tempat", row:1, timer:75},
+  {label:"Tujuan Kegiatan", row:2, timer:90},
+  {label:"Peserta", row:3, timer:60, isPeserta:true},
+  {label:"Jalannya Kegiatan", row:4, timer:180},
+  {label:"Hasil Kegiatan", row:5, timer:120},
+  {label:"Kesimpulan", row:6, timer:120},
+];
+
+// Letters A-G are FIXED. The text contents are SHUFFLED each session.
+const LETTERS = ["A","B","C","D","E","F","G"];
+const ANSWER_TEXTS = [
+  "Laporan Kegiatan Membuat Terarium Kelas 3 SD Cahaya Qur'an",
+  "Senin, 7 April 2025 – Ruang Kelas 3, SD Islam Tahfizh Cahaya Qur'an",
+  "Belajar membuat ekosistem mini dalam wadah kaca dan memahami kebutuhan makhluk hidup",
+  "Seluruh siswa kelas 3 dan Bu Rini selaku guru pembimbing",
+  "Siswa menyiapkan wadah kaca, memasukkan kerikil, arang, lalu tanah. Kemudian menanam tanaman kecil dan menghias terarium dengan batu dan pasir berwarna.",
+  "Setiap siswa berhasil membuat satu terarium indah yang akan dirawat di kelas sebagai media pembelajaran.",
+  "Kegiatan ini mengajarkan bahwa makhluk hidup butuh tanah, air, dan udara. Merawat tanaman adalah bentuk syukur atas ciptaan Allah.",
+];
+
+// shuffledAnswers: built each session — letter stays, text is shuffled
+let shuffledAnswers = [];
+
+function buildShuffledAnswers(){
+  // shuffle the texts
+  const texts = [...ANSWER_TEXTS].sort(()=>Math.random()-0.5);
+  shuffledAnswers = LETTERS.map((letter, i) => ({letter, text: texts[i]}));
+}
+
+const QUIZ_SOAL = [
+  {q:"Apa yang dimaksud dengan laporan?",opts:["Cerita khayalan yang kita buat sendiri","Tulisan tentang apa yang sudah kita lihat, dengar, atau lakukan","Puisi tentang kegiatan sekolah","Gambar kegiatan di sekolah"],ans:1},
+  {q:"Bagian pertama dalam struktur laporan adalah...",opts:["Kesimpulan","Peserta","Judul","Hasil Kegiatan"],ans:2},
+  {q:"Dalam laporan, bagian 'Jalannya Kegiatan' berisi tentang apa?",opts:["Nama-nama siswa yang ikut","Urutan kejadian dari awal sampai akhir kegiatan","Pendapat pribadi penulis","Waktu dan tempat kegiatan"],ans:1},
+  {q:"Laporan harus ditulis berdasarkan...",opts:["Khayalan","Cerita teman","Fakta yang benar-benar terjadi","Pendapat pribadi"],ans:2},
+  {q:"Kalimat mana yang cocok untuk bagian 'Kesimpulan' laporan?",opts:["Hari Jumat pagi, kami pergi ke halaman sekolah.","Kegiatan ini diikuti oleh seluruh siswa kelas 3.","Kegiatan Jumat Bersih membuat kami belajar bahwa kebersihan adalah tanggung jawab bersama.","Ada tiga tempat sampah berwarna hijau, kuning, dan biru."],ans:2},
+  {q:"Manakah yang BUKAN ciri-ciri laporan yang baik?",opts:["Ditulis dengan urutan yang jelas","Berisi fakta bukan karangan","Kalimat singkat dan mudah dimengerti","Boleh ditambah cerita yang tidak terjadi agar lebih menarik"],ans:3},
+  {q:"'Lingkungan sekolah menjadi bersih dan rapi' termasuk bagian laporan apa?",opts:["Jalannya Kegiatan","Kesimpulan","Hasil Kegiatan","Tujuan Kegiatan"],ans:2},
+  {q:"Pelajaran penting dari kegiatan ditulis di bagian...",opts:["Judul","Peserta","Hasil Kegiatan","Kesimpulan"],ans:3},
+];
+
+// ═══════════════════ STATE ═══════════════════
+let curBagian = 0;
+let curStudent = null;
+let spinning = false;
+let timerIv = null;
+let timerLeft = 0;
+let timerTotal = 0;
+let usedLetters = [];
+let quizIdx = 0;
+let quizScore = 0;
+let quizAnswered = false;
+let focusTimerIv = null;
+
+// ═══════════════════ NAV ═══════════════════
+function goPg(idx){
+  document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===idx));
+  document.querySelectorAll('.ndot').forEach((d,i)=>{
+    d.classList.remove('active','done');
+    if(i===idx) d.classList.add('active');
+    else if(i<idx) d.classList.add('done');
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(idx<=1) initReveal();
+  if(idx!==2){stopTimer();document.getElementById('timer-fixed').classList.remove('show');}
+}
+
+function initReveal(){
+  setTimeout(()=>{
+    document.querySelectorAll('.page.active .ri').forEach((el,i)=>{
+      setTimeout(()=>el.classList.add('vis'),i*110);
+    });
+  },80);
+}
+
+// ═══════════════════ GAME WORKSHEET ═══════════════════
+function initWS(){
+  curBagian=0;usedLetters=[];
+  buildShuffledAnswers();
+  renderProgDots();updatePickScreen();
+}
+
+function renderProgDots(){
+  const wrap=document.getElementById('prog-dots');wrap.innerHTML='';
+  BAGIAN_INFO.forEach((b,i)=>{
+    const d=document.createElement('div');
+    d.className='pdot'+(i<curBagian?' done':i===curBagian?' active':'');
+    d.textContent=i+1;d.title=b.label;wrap.appendChild(d);
+  });
+}
+
+function updatePickScreen(){
+  const b=BAGIAN_INFO[curBagian];
+  document.getElementById('bagian-badge').textContent=`Bagian ${curBagian+1} dari 7 — ${b.label}`;
+  document.getElementById('picked-name').style.display='none';
+  document.getElementById('btn-again').style.display='none';
+  document.getElementById('btn-go').style.display='none';
+  document.getElementById('btn-spin').style.display='inline-block';
+  document.getElementById('ball-svg').classList.remove('spinning');
+  renderProgDots();
+}
+
+function doSpin(){
+  if(spinning)return;
+  spinning=true;
+  document.getElementById('picked-name').style.display='none';
+  document.getElementById('btn-again').style.display='none';
+  document.getElementById('btn-go').style.display='none';
+  document.getElementById('btn-spin').style.display='none';
+  const bsv=document.getElementById('ball-svg');
+  bsv.classList.add('spinning');
+  let c=0;
+  const iv=setInterval(()=>{
+    c++;
+    if(c>=22){
+      clearInterval(iv);bsv.classList.remove('spinning');
+      curStudent=SISWA[Math.floor(Math.random()*SISWA.length)];
+      const pn=document.getElementById('picked-name');
+      pn.textContent=curStudent;pn.style.display='block';
+      document.getElementById('btn-again').style.display='inline-block';
+      document.getElementById('btn-go').style.display='inline-block';
+      spinning=false;
+      showToast('⚽ '+curStudent+' maju!');
+      confetti();
+    }
+  },75);
+}
+
+function goGame(){
+  document.getElementById('ws-pick-screen').style.display='none';
+  document.getElementById('ws-game-screen').style.display='block';
+  BAGIAN_INFO.forEach((_,i)=>{
+    const r=document.getElementById('wrow-'+i);
+    r.classList.remove('row-active','row-done');
+    if(i<curBagian) r.classList.add('row-done');
+    if(i===curBagian) r.classList.add('row-active');
+  });
+  document.getElementById('gs-name').textContent=curStudent;
+  document.getElementById('gs-bagian').textContent='▶ '+BAGIAN_INFO[curBagian].label;
+  const b=BAGIAN_INFO[curBagian];
+  if(b.isPeserta){
+    // Peserta: no options, just show focus overlay with instruction
+    document.getElementById('opts-panel').style.display='none';
+    // Show fullscreen focus overlay for peserta (writing names)
+    showFocusOverlay(
+      '4. Peserta',
+      'Tulis nama lengkap seluruh siswa kelas 3 dan Bu Rini!',
+      b.timer,
+      nextBagian
+    );
+  } else {
+    document.getElementById('opts-panel').style.display='block';
+    document.getElementById('opts-panel').style.opacity='1';
+    renderOpts();
+  }
+}
+
+function renderOpts(){
+  const list=document.getElementById('opts-list');list.innerHTML='';
+  // Letters always A-G in order, text is shuffled
+  shuffledAnswers.forEach(ans=>{
+    const btn=document.createElement('button');
+    btn.className='opt-btn'+(usedLetters.includes(ans.letter)?' used':'');
+    btn.innerHTML=`<span class="opt-letter">${ans.letter}</span><span class="opt-text">${ans.text}</span>`;
+    if(!usedLetters.includes(ans.letter)) btn.onclick=()=>pickOpt(ans);
+    list.appendChild(btn);
+  });
+}
+
+function pickOpt(ans){
+  document.getElementById('wf-'+curBagian).textContent=ans.text;
+  usedLetters.push(ans.letter);
+  document.getElementById('opts-panel').style.opacity='0.4';
+  document.querySelectorAll('.opt-btn').forEach(b=>b.style.pointerEvents='none');
+
+  // Show fullscreen focus overlay with the chosen answer
+  showFocusOverlay(
+    (curBagian+1)+'. '+BAGIAN_INFO[curBagian].label,
+    ans.text,
+    BAGIAN_INFO[curBagian].timer,
+    nextBagian
+  );
+}
+
+// ═══════════════════ FOCUS OVERLAY ═══════════════════
+function showFocusOverlay(bagianLabel, answerText, seconds, onDone){
+  const overlay=document.getElementById('focus-overlay');
+  document.getElementById('fo-bagian').textContent=bagianLabel;
+  document.getElementById('fo-text').textContent=answerText;
+
+  timerLeft=seconds;timerTotal=seconds;
+  updateFoTimer();
+  document.getElementById('fo-bar').style.width='100%';
+  document.getElementById('fo-bar').className='fo-bar';
+  document.getElementById('fo-timer').className='fo-timer';
+
+  overlay.classList.add('show');
+
+  if(focusTimerIv) clearInterval(focusTimerIv);
+  focusTimerIv=setInterval(()=>{
+    timerLeft--;
+    updateFoTimer();
+    document.getElementById('fo-bar').style.width=(timerLeft/timerTotal*100)+'%';
+
+    const ft=document.getElementById('fo-timer');
+    const fb=document.getElementById('fo-bar');
+    if(timerLeft<=timerTotal*0.4){ft.className='fo-timer warn';fb.className='fo-bar warn';}
+    if(timerLeft<=10){ft.className='fo-timer danger';fb.className='fo-bar danger';playTick();}
+    if(timerLeft<=0){
+      clearInterval(focusTimerIv);focusTimerIv=null;
+      overlay.classList.remove('show');
+      playAlarmFire();
+      setTimeout(onDone,1200);
+    }
+  },1000);
+}
+
+function updateFoTimer(){
+  const m=Math.floor(timerLeft/60);
+  const s=timerLeft%60;
+  document.getElementById('fo-timer').textContent=m>0?`${m}:${s.toString().padStart(2,'0')}`:timerLeft;
+}
+
+function nextBagian(){
+  document.getElementById('wrow-'+curBagian).classList.remove('row-active');
+  document.getElementById('wrow-'+curBagian).classList.add('row-done');
+  curBagian++;
+  stopTimer();
+  document.getElementById('timer-fixed').classList.remove('show');
+  if(curBagian>=BAGIAN_INFO.length){
+    document.getElementById('ws-game-screen').style.display='none';
+    document.getElementById('ws-done-screen').style.display='block';
+    confetti();confetti();return;
+  }
+  document.getElementById('ws-game-screen').style.display='none';
+  document.getElementById('ws-pick-screen').style.display='block';
+  document.getElementById('opts-panel').style.opacity='1';
+  updatePickScreen();
+}
+
+function resetWS(){
+  curBagian=0;usedLetters=[];
+  buildShuffledAnswers();
+  for(let i=0;i<7;i++){
+    const f=document.getElementById('wf-'+i);
+    f.textContent='';
+    document.getElementById('wrow-'+i).classList.remove('row-active','row-done');
+  }
+  document.getElementById('ws-done-screen').style.display='none';
+  document.getElementById('ws-game-screen').style.display='none';
+  document.getElementById('ws-pick-screen').style.display='block';
+  updatePickScreen();
+}
+
+// ═══════════════════ TIMER (legacy, used if needed) ═══════════════════
+function stopTimer(){if(timerIv){clearInterval(timerIv);timerIv=null;}if(focusTimerIv){clearInterval(focusTimerIv);focusTimerIv=null;}}
+
+// Audio
+let actx=null;
+function getActx(){if(!actx) actx=new(window.AudioContext||window.webkitAudioContext)();return actx;}
+
+function playTick(){
+  try{
+    const ctx=getActx();
+    const o=ctx.createOscillator();const g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    o.frequency.value=880;o.type='sine';
+    g.gain.setValueAtTime(0.28,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.12);
+    o.start();o.stop(ctx.currentTime+0.12);
+  }catch(e){}
+}
+
+function playAlarmFire(){
+  try{
+    const ctx=getActx();
+    const freqs=[960,0,960,0,960,0,1100,0,1100,0,1100,0,800,0,800,0,800,0,960,960,1100,1100];
+    freqs.forEach((f,i)=>{
+      if(f===0)return;
+      const o=ctx.createOscillator();const g=ctx.createGain();
+      o.connect(g);g.connect(ctx.destination);
+      o.type='sawtooth';o.frequency.value=f;
+      g.gain.setValueAtTime(0,ctx.currentTime+i*0.09);
+      g.gain.linearRampToValueAtTime(0.6,ctx.currentTime+i*0.09+0.01);
+      g.gain.setValueAtTime(0.6,ctx.currentTime+i*0.09+0.07);
+      g.gain.linearRampToValueAtTime(0,ctx.currentTime+i*0.09+0.09);
+      o.start(ctx.currentTime+i*0.09);o.stop(ctx.currentTime+i*0.09+0.1);
+    });
+  }catch(e){}
+}
+
+// ═══════════════════ QUIZ ═══════════════════
+function startQuiz(){quizIdx=0;quizScore=0;renderQuiz();}
+function renderQuiz(){
+  quizAnswered=false;
+  const s=QUIZ_SOAL[quizIdx];
+  const labs=['A','B','C','D'];
+  document.getElementById('quiz-wrap').innerHTML=`
+    <div class="quiz-score-row">
+      <span>Soal ${quizIdx+1} dari ${QUIZ_SOAL.length}</span>
+      <span>Skor: <span class="qs-val">${quizScore}</span></span>
+    </div>
+    <div class="q-num">Soal ${quizIdx+1}</div>
+    <div class="q-text">${s.q}</div>
+    <div class="q-opts">
+      ${s.opts.map((o,i)=>`<button class="qbtn" onclick="answerQuiz(${i},${s.ans},this)"><span class="ql">${labs[i]}</span>${o}</button>`).join('')}
+    </div>
+    <div class="q-feedback" id="qfb"></div>
+    <button class="q-next" id="qnxt" onclick="nextQuiz()">${quizIdx<QUIZ_SOAL.length-1?'Soal Berikutnya →':'🎉 Selesai!'}</button>
+  `;
+}
+function answerQuiz(idx,correct,btn){
+  if(quizAnswered)return;quizAnswered=true;
+  document.querySelectorAll('.qbtn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('qfb');
+  if(idx===correct){btn.classList.add('correct');quizScore++;fb.textContent='✅ Benar!';fb.className='q-feedback benar';confetti();}
+  else{btn.classList.add('wrong');document.querySelectorAll('.qbtn')[correct].classList.add('correct');fb.textContent='❌ Kurang tepat. Lihat jawaban hijau ya!';fb.className='q-feedback salah';}
+  fb.style.display='block';document.getElementById('qnxt').style.display='block';
+}
+function nextQuiz(){
+  if(quizIdx<QUIZ_SOAL.length-1){quizIdx++;renderQuiz();}
+  else{
+    document.getElementById('quiz-wrap').innerHTML=`
+      <div style="text-align:center;padding:28px 0;">
+        <div style="font-size:3rem;margin-bottom:12px;">🏆</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:2rem;color:var(--g2);margin-bottom:8px;">Selesai!</div>
+        <div style="font-size:1rem;color:#555;font-weight:700;margin-bottom:4px;">Skor kamu:</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:3rem;color:var(--g2);margin-bottom:20px;">${quizScore} / ${QUIZ_SOAL.length}</div>
+        <button onclick="startQuiz()" style="font-family:'Fredoka One',cursive;font-size:1rem;background:var(--red);color:#fff;border:none;border-radius:50px;padding:12px 28px;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,0.2);">🔄 Ulangi Quiz</button>
+      </div>
+    `;
+    confetti();confetti();confetti();
+  }
+}
+
+// ═══════════════════ UTILS ═══════════════════
+function confetti(){
+  const wrap=document.getElementById('cw');
+  const colors=['#1a6b2f','#f0c500','#e8380d','#fff','#a8e6b8','#FFD700','#ff6b2b'];
+  for(let i=0;i<30;i++){
+    const c=document.createElement('div');c.className='cf';
+    c.style.cssText=`left:${Math.random()*100}vw;top:-10px;background:${colors[~~(Math.random()*colors.length)]};width:${Math.random()*8+5}px;height:${Math.random()*8+5}px;animation-duration:${Math.random()*1.5+1}s;animation-delay:${Math.random()*0.4}s;`;
+    wrap.appendChild(c);setTimeout(()=>c.remove(),3000);
+  }
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+window.onload=()=>{initReveal();initWS();};
+</script>
+</body>
+</html>
